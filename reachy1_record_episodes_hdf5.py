@@ -65,7 +65,7 @@ session_path = os.path.join("data", session_name)
 os.makedirs(session_path, exist_ok=True)
 
 
-reachy = ReachySDK("10.42.0.124")
+reachy = ReachySDK(args.robot_ip)
 reachy.turn_off_smoothly("r_arm")
 time.sleep(2)
 reachy.turn_on("r_arm")
@@ -75,6 +75,7 @@ reachy.joints.neck_pitch.goal_position = 0
 reachy.joints.neck_yaw.goal_position = 0
 reachy.turn_off("head")
 camera_names = ["cam_trunk"]
+print("Restarted")
 try:
     while True:
         episode_id = len(glob(f"{session_path}/*.hdf5"))
@@ -89,6 +90,7 @@ try:
             data_dict[f"/observations/images_ids/{camera_name}"] = []
             os.makedirs(f"{session_path}/images_episode_{episode_id}", exist_ok=True)
 
+        print("Start working...!")
         current_episode_length = 0
         os.system('spd-say "ready?"')
         time.sleep(1)
@@ -107,7 +109,7 @@ try:
             i += 1
             t = time.time() - start
             took_start = time.time()
-            left_rgb = reachy.right_camera.last_frame
+            left_rgb = reachy.right_camera.last_frame#reachy.right_camera.last_frame
             # TODO set reachy1 on the right branches to get this
             # mobile_base_action = reachy.mobile_base.last_cmd_vel
             # mobile_base_pos = reachy.mobile_base.odometry
