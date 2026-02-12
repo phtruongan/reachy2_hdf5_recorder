@@ -92,15 +92,15 @@ try:
 
         print("Start working...!")
         current_episode_length = 0
-        os.system('spd-say "ready?"')
-        time.sleep(1)
-        os.system('spd-say "3"')
-        time.sleep(1)
-        os.system('spd-say "2"')
-        time.sleep(1)
-        os.system('spd-say "1"')
-        time.sleep(1)
-        os.system('spd-say "start"')
+        #os.system('spd-say "ready?"')
+        #time.sleep(1)
+        #os.system('spd-say "3"')
+        #time.sleep(1)
+        #os.system('spd-say "2"')
+        #time.sleep(1)
+        #os.system('spd-say "1"')
+        #time.sleep(1)
+        #os.system('spd-say "start"')
         print("Recording ...")
         elapsed = 0
         i = -1
@@ -202,7 +202,7 @@ try:
             )
 
             time.sleep(max(0, 1 / args.sampling_rate - took))
-        os.system('spd-say "stop"')
+        #os.system('spd-say "stop"')
 
         print("Done recording!")
 
